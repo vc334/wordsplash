@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-4 mt-5">
+
+      <%= link_to 'Take me to my words', words_path %> | <%= link_to 'Play flashcards', flashcards_words_path %>
+      <h3 style="margin-top: 16px;">Type a word in Spanish</h3>
+      <%= simple_form_for [@word] do |f| %>
+      <%= f.input :word %>
+      <%= f.submit 'submit', class: "btn btn-primary"%>
+      <% end %>
+
+    </div>
+  </div>
+</div>

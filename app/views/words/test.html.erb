@@ -1,0 +1,51 @@
+test.html.erb
+
+
+<<!-- !--
+
+<input type="hidden" id="motorcycle_id" name="motorcycle_id" value=<%= @motorcycle.id %> >
+
+
+
+= f.input :title, :as => :hidden, :input_html => { :value => "some value" }
+ -->
+ -->
+
+
+
+ <input type="hidden" id="motorcycle_id" name="motorcycle_id" value=<%= @motorcycle.id %>
+
+
+
+
+
+
+= f.input :title, :as => :hidden, :input_html => { :value => "some value" }
+
+
+
+
+
+ <input type="hidden" id="motorcycle_id" name="motorcycle_id" value=<%= @motorcycle.id
+
+
+
+
+
+
+
+
+
+       <%= simple_form_for :guess, method: "GET", url: flashcards_second_words_path do |f| %>
+      <%= f.input :guess %>
+      <%= f.hidden_field :word_prompt, :value => @word  %>
+
+      <%= f.submit 'submit', class: "btn btn-primary"%>
+      <% end %>
+
+
+      <%= form_for :guess, url: flashcards_second_words_path, method: "GET" do |form| %>
+      <%= form.text_field :guess %>
+      <%= form.hidden_field :word_prompt, :value => @word %>
+      <%= form.submit  %>
+      <% end  %>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-4 mt-5">
+
+      <h3>Your words</h3>
+        <% i = 1 %>
+        <table>
+          <tr>
+            <th>Spanish</th>
+            <th>English</th>
+          </tr>
+
+          <% @words.each do |word| %>
+            <tr>
+              <td>
+                <%= i %>. <%= word.word %>
+              </td>
+
+              <td>
+                <%= word.translation %>
+              </td>
+            </tr>
+            <% i += 1 %>
+          <% end %>
+        </table>
+
+      <%= link_to 'Play flashcards', flashcards_words_path %>
+
+    </div>
+  </div>
+</div>
