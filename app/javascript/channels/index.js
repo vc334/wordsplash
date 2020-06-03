@@ -10,9 +10,17 @@ const answer = document.querySelector("#answer");
 
 const showWordButton = document.querySelector("#show_word_button");
 
-showWordButton.addEventListener("click", event => {
-  answer.classList.toggle("hidden_answer");
+// showWordButton.addEventListener("click", event => {
+//   answer.classList.toggle("hidden_answer");
+// });
+
+document.querySelectorAll(".buzz").forEach((photo) => {
+  photo.addEventListener("click", (event) => {
+    console.log(event)
+    event.currentTarget.classList.toggle("photo-highlight");
+  });
 });
+
 
 // setTimeout(() => {
 //   showWord.insertAdjacentHTML('afterend', "Hi Victor!!!")
