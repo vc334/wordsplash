@@ -30,6 +30,7 @@ class WordsController < ApplicationController
 
   def flashcards
     @word = Word.all.sample
+    @photo = @word.image_urls.sample
   end
 
   def flashcards_second
@@ -39,8 +40,9 @@ class WordsController < ApplicationController
     if @guess == @word_prompt.word
       redirect_to flashcards_words_path
     else
-      @answer = true
+      @wrong = true
       @word = Word.find(word_id)
+      @photo = guess_params[:photo]
       render :flashcards
     end
   end
@@ -74,7 +76,7 @@ class WordsController < ApplicationController
   end
 
   def guess_params
-    params.require(:flashcards).permit(:guess, :word)
+    params.require(:flashcards).permit(:guess, :word, :photo)
   end
 end
 
