@@ -1,6 +1,7 @@
+require 'json'
+require 'open-uri'
+
 class WordsController < ApplicationController
-  require 'json'
-  require 'open-uri'
 
   def new
     @word = Word.new
@@ -15,12 +16,7 @@ class WordsController < ApplicationController
     spanish_word = translated_word['text'].first
     @word.translation = spanish_word
 
-    image_search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?Subscription-Key=895bd91126ba4364997596d10078196f&q=#{@word.word}&count=1"
-    image_search_url_serialized = open(image_search_url).read
-    image_search_url_parsed = JSON.parse(image_search_url_serialized)
-    final_image_url = image_search_url_parsed['value'][0]['thumbnailUrl']
-    @word.image_url = final_image_url
-
+    # took out my photos code here
     if @word.save
       redirect_to word_path(@word)
     else
@@ -51,6 +47,24 @@ class WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
+
+    image_search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?Subscription-Key=895bd91126ba4364997596d10078196f&q=#{@word.word}&count=9"
+    image_search_url_serialized = open(image_search_url).read
+    image_search_url_parsed = JSON.parse(image_search_url_serialized)
+    int = 0
+
+    9.times do
+      @word.image_urls << image_search_url_parsed['value'][int]['thumbnailUrl']
+      int += 1
+    end
+  end
+
+  def show_second
+    @word = Word.find(params[:id])
+    urls_string = params[:photo_urls].split(/,/)
+    @word.image_urls.replace(urls_string)
+    @word.save
+    redirect_to words_path
   end
 
   private
@@ -63,8 +77,6 @@ class WordsController < ApplicationController
     params.require(:flashcards).permit(:guess, :word)
   end
 end
-
-
 
 
 

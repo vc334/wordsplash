@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get :flashcards
       post 'flashcards_second'
+      get :show_second
     end
   end
 

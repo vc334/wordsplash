@@ -7,8 +7,9 @@
       <%= link_to 'Take me to my words', words_path %>
       </div>
 
-      <% if @word.image_url.present? %>
-      <%= image_tag(@word.image_url.concat("&w=400&h=400"), :alt => "nothing yet...") %>
+      <% if @word.image_urls.present? %>
+      <%= image_tag(@word.image_urls.sample, :alt => "nothing yet...") %>
+      <!-- .concat("&w=400&h=400") -->
       <% end %>
 
       <h3 id="test" class="mt-3">Type your guess</h3>
