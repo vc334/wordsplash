@@ -1,11 +1,19 @@
 <br>
 <h1>The English translation for <strong><%= @word.word %></strong>  is <strong><%= @word.translation %></strong></h1>
-<h2>Select 3 photos to be used for your flashcards</h2>
+<h2>Select photos to be used for your flashcards.  We recommend selecting at least 3</h2>
 <hr>
 
 
-<%= @word.image_urls.each do |image| %>
 
-  <%= image_tag(image.concat("&w=150&h=150"), class: "buzz") %>
+<% @word.image_urls.each do |image| %>
+
+<img src="<%= image %>&w=150&h=150" alt="" class="buzz">
+
 <% end %>
-  <hr>
+<hr>
+
+<form action="/words/show_second" id="photos-form">
+  <input type="hidden" name="id" value="<%= params[:id] %>">
+  <input type="submit" id="photos-submit" value="Submit">
+</form>
+

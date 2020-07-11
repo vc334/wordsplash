@@ -1,6 +1,7 @@
+require 'json'
+require 'open-uri'
+
 class WordsController < ApplicationController
-  require 'json'
-  require 'open-uri'
 
   def new
     @word = Word.new
@@ -56,7 +57,14 @@ class WordsController < ApplicationController
       @word.image_urls << image_search_url_parsed['value'][int]['thumbnailUrl']
       int += 1
     end
+  end
 
+  def show_second
+    @word = Word.find(params[:id])
+    urls_string = params[:photo_urls].split(/,/)
+    @word.image_urls.replace(urls_string)
+    @word.save
+    redirect_to words_path
   end
 
   private
@@ -69,8 +77,6 @@ class WordsController < ApplicationController
     params.require(:flashcards).permit(:guess, :word)
   end
 end
-
-
 
 
 
