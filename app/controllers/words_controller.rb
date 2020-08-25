@@ -14,7 +14,7 @@ class WordsController < ApplicationController
     @word = Word.new(word_params)
     @word.user = current_user
     translator = BingTranslator.new('cc3610100b0b44ad94f7a3dc9832a6c8')
-    @word.translation = translator.translate(@word.word, :from => 'es', :to => 'en')
+    @word.translation = translator.translate(@word.word, :from => 'es', :to => 'en').downcase
     # spanish = translator.translate('Hello. This will be translated!', :to => 'es')
 
     # url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200518T152813Z.29926faa408da3c8.036e59f098ab34250bca659697ae2932edfc642e&lang=es-en&text=#{@word.word}"

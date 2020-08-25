@@ -2,13 +2,12 @@
   <div class="row">
     <div class="col-sm-4 offset-sm-4 mt-5">
 
-      <h3>Your words</h3>
+      <h3>Your Word List</h3>
         <% i = 1 %>
         <table>
           <tr>
             <th>Spanish</th>
             <th>English</th>
-            <th>Remove</th>
           </tr>
 
           <% @words.each do |word| %>
@@ -22,10 +21,11 @@
               </td>
 
               <td>
-                <%= link_to "Delete",
-                            word_path(word),
+                <%= link_to word_path(word),
                             method: :delete,
-                            data: { confirm: "Are you sure?" } %>
+                            data: { confirm: "Are you sure?" }, html_input: { class: "delete-icon" } do %>
+                            <i class="far fa-trash-alt test"></i>
+                            <% end %>
               </td>
             </tr>
             <% i += 1 %>
@@ -37,3 +37,15 @@
     </div>
   </div>
 </div>
+
+<style>
+  th, td {
+    width: 600px;
+  }
+
+  .test {
+    color: red;
+  }
+
+
+</style>

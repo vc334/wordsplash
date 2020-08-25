@@ -17,5 +17,22 @@
   font-weight: 400;
   color: white;
   font-size: 26px;
-  letter-spacing: .8px;
+  letter-spacing: 1.1px;
 }
+
+.email-button[aria-expanded="true"]
+  { border: none;
+    background-color: #7bc807 !important;
+   }
+
+
+.email-button, .email-button:hover , .email-button:active, .email-button:focus {
+  background-color: #7bc807;
+  border: none;
+  color: white;
+  margin: 0px;
+  outline: none;
+}
+
+// button.open { background: red !important; }
+
