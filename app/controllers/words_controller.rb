@@ -1,6 +1,9 @@
 require 'json'
 require 'open-uri'
 
+require 'rubygems'
+require 'bing_translator'
+
 class WordsController < ApplicationController
 
   def new
@@ -10,11 +13,15 @@ class WordsController < ApplicationController
   def create
     @word = Word.new(word_params)
     @word.user = current_user
-    url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200518T152813Z.29926faa408da3c8.036e59f098ab34250bca659697ae2932edfc642e&lang=es-en&text=#{@word.word}"
-    word_serialized = open(url).read
-    translated_word = JSON.parse(word_serialized)
-    spanish_word = translated_word['text'].first
-    @word.translation = spanish_word
+    translator = BingTranslator.new('cc3610100b0b44ad94f7a3dc9832a6c8')
+    @word.translation = translator.translate(@word.word, :from => 'es', :to => 'en')
+    # spanish = translator.translate('Hello. This will be translated!', :to => 'es')
+
+    # url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200518T152813Z.29926faa408da3c8.036e59f098ab34250bca659697ae2932edfc642e&lang=es-en&text=#{@word.word}"
+    # word_serialized = open(url).read
+    # translated_word = JSON.parse(word_serialized)
+    # spanish_word = translated_word['text'].first
+    # @word.translation = spanish_word
 
     # took out my photos code here
     if @word.save
@@ -79,6 +86,3 @@ class WordsController < ApplicationController
     params.require(:flashcards).permit(:guess, :word, :photo)
   end
 end
-
-
-
