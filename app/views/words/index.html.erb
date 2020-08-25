@@ -8,6 +8,7 @@
           <tr>
             <th>Spanish</th>
             <th>English</th>
+            <th>Remove</th>
           </tr>
 
           <% @words.each do |word| %>
@@ -18,6 +19,13 @@
 
               <td>
                 <%= word.translation %>
+              </td>
+
+              <td>
+                <%= link_to "Delete",
+                            word_path(word),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
               </td>
             </tr>
             <% i += 1 %>

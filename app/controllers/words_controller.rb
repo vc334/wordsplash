@@ -31,6 +31,14 @@ class WordsController < ApplicationController
     end
   end
 
+  def destroy
+    @word = Word.find(params[:id])
+    @word.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+    redirect_to words_path
+  end
+
   def index
     @words = Word.all
   end
