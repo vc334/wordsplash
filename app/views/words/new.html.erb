@@ -5,7 +5,7 @@
       <%= link_to 'Words List', words_path %> | <%= link_to 'Flashcards', flashcards_words_path %>
       <div class="my-2"></div>
       <%= simple_form_for [@word] do |f| %>
-      <%= f.input :word, label: false, placeholder: 'Type a word in Spanish' %>
+      <%= f.input :word, label: false, placeholder: 'Type a word in Spanish or English' %>
       <%= f.submit 'Submit', class: "btn btn-primary"%>
       <% end %>
     </div>

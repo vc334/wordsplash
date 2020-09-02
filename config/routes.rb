@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'words#new'
+  get 'settings', to: 'words#settings'
+  get 'settingssecond', to: 'words#settingssecond'
 
   resources :words do
     collection do

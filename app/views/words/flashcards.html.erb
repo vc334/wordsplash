@@ -1,6 +1,7 @@
 <!-- <h1>The word is <%= @word.word %></h1> -->
+<!-- <h1 class="word-horizontal"><%= @word.word %></h1> -->
 
-<div class="container mb-5">
+<div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-sm-4 offset-sm-4 mt-5">
       <div class="mb-3">
@@ -8,11 +9,14 @@
       </div>
 
       <% if @word.image_urls.present? %>
-      <%= image_tag(@photo, :alt => "nothing yet...") %>
-      <!-- .concat("&w=400&h=400") -->
+      <%= image_tag(@photo.gsub("w=150&h=150", "w=250&h=250"), :alt => "nothing yet...") %>
       <% end %>
-
-      <h3 id="test" class="mt-3">Type your guess</h3>
+      <!-- .concat("&w=180&h=180") -->
+      <% if current_user.language == 'spanish' %>
+        <h3 id="test" class="mt-3">What's this in Spanish?</h3>
+      <% else %>
+        <h3 id="test" class="mt-3">What's this in English?</h3>
+      <% end %>
 
 
         <form action="/words/flashcards_second" method="post" id="flashcards">
@@ -39,7 +43,11 @@
 
         <div class="btn btn-primary mt-3" id="show_word_button" data-word=<%= @word.word %> >Show answer</div>
         <div id="answer" class="hidden_answer mt-2">
-          <%= @word.word %>
+          <% if current_user.language == 'spanish' %>
+            <%= @word.word %>
+          <% else %>
+            <%= @word.translation %>
+          <% end %>
         </div>
 
 

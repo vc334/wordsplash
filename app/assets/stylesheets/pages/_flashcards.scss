@@ -1,3 +1,13 @@
 .hidden_answer {
   display: none;
 }
+
+.word-horizontal {
+  position: relative;
+  animation: go-right 10s forwards infinite linear;
+}
+
+@keyframes go-right {
+  from{ transform: translateX(-150px) }
+  to{ transform: translateX(100%)}
+}
