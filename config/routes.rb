@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :flashcards
       post 'flashcards_second'
       get :show_second
+      get :practice
     end
   end
 

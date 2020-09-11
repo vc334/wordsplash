@@ -1,0 +1,12 @@
+
+<p id="moving-word"><%= @moving_word %></p>
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-4 mt-5 text-center">
+      <%= image_tag(@photo.gsub("w=150&h=150", "w=250&h=250"), :alt => "nothing yet...") %>
+      <br>
+        <p style="font-size: 16px; color: blue;"><%= @displayed_word %></p>
+    </div>
+  </div>
+</div>

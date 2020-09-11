@@ -83,6 +83,14 @@ class WordsController < ApplicationController
     end
   end
 
+  def practice
+    @word = Word.first
+    current_user.language == 'spanish' ? @displayed_word = @word.translation : @displayed_word = @word.word
+    current_user.language == 'spanish' ? @moving_word = @word.word : @displayed_word = @word.translation
+    @photo = @word.image_urls.first
+
+  end
+
   def show
     @word = Word.find(params[:id])
     remove_accents = @word.word.tr(

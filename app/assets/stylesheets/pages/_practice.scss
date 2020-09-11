@@ -1,0 +1,9 @@
+#moving-word {
+  position: relative;
+  animation: go-right 10s forwards 1 linear;
+}
+
+@keyframes go-right {
+  from{ transform: translateX(-150px) }
+  to{ transform: translateX(100%)}
+}
