@@ -7,6 +7,19 @@
       <%= image_tag(@photo.gsub("w=150&h=150", "w=250&h=250"), :alt => "nothing yet...") %>
       <br>
         <p style="font-size: 16px; color: blue;"><%= @displayed_word %></p>
+
+        <form action="/words/practice" method="get" id="">
+
+          <!-- <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
+
+          <input type="hidden" name="nextword" value=<%= @index2 + 1 %> >
+
+          <!-- <input type="hidden" name="flashcards[photo]" value=<%= @photo %> > -->
+
+          <input type="submit" value="Next" class="btn btn-primary">
+
+        </form>
+
     </div>
   </div>
 </div>

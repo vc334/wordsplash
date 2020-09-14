@@ -84,10 +84,32 @@ class WordsController < ApplicationController
   end
 
   def practice
-    @word = Word.first
-    current_user.language == 'spanish' ? @displayed_word = @word.translation : @displayed_word = @word.word
-    current_user.language == 'spanish' ? @moving_word = @word.word : @displayed_word = @word.translation
-    @photo = @word.image_urls.first
+    @all_words = Word.all
+    number_of_words = @all_words.count
+    @index2 = params["nextword"].to_i || @index2 = 0
+
+    if @index2 == number_of_words - 1
+      @index2 = 0
+    end
+
+    @word = @all_words[@index2]
+
+
+    # unless params["nextword"].nil?
+    #   @word = @words[params["nextword"].to_i]
+    # else
+    #   @word = @words[index]
+    #   @index2 = 0
+    # end
+
+    current_user.language == "spanish" ? @displayed_word = @word.translation : @displayed_word = @word.word
+
+    current_user.language == 'spanish' ? @moving_word = @word.word : @moving_word = @word.translation
+
+    # params["nextword"] != nil ? @index2 +=1 : @index2 = 1
+
+
+    @photo = @word.image_urls.sample
 
   end
 
@@ -138,4 +160,9 @@ class WordsController < ApplicationController
   def guess_params
     params.require(:flashcards).permit(:guess, :word, :photo)
   end
+
+  # def next_word
+  #   params.require(:nextword).permit(:index2)
+  # end
+
 end
