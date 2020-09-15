@@ -1,9 +1,24 @@
 #moving-word {
   position: relative;
-  animation: go-right 10s forwards 1 linear;
+    animation-name: go-right;
+  animation-name: getbigger;
+
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  // , get-bigger 8s forwards;
+
+  // go-right 10s both infinite linear;
 }
 
 @keyframes go-right {
-  from{ transform: translateX(-150px) }
-  to{ transform: translateX(100%)}
+  0% { transform: translateX(0) }
+  50% { transform: translateX(50%) }
+  100% { transform: translateX(100%) }
+}
+
+@keyframes getbigger {
+  0% { transform: scale(1) }
+  50% { transform: scale(2) }
+  100% { transform: scale(1) }
 }
