@@ -1,11 +1,13 @@
 #moving-word {
   position: absolute;
+  // top: -50px;
+  // left: 100px;
   width: 100%;
+  min-height: 100vh;
   // box-sizing: border-box;
-  animation-name: go-right, fontsize;
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation: go-right 6s 1 linear, fontsize 6s 1 linear, go-down 6s 6s 1 linear, fontsize 6s 6s 1 linear, bottom-left 6s 12s 1 linear, fontsize 6s 12s 1 linear, bottom-right 6s 18s forwards 1 linear, fontsize 6s 18s forwards 1 linear;
+  // animation-iteration-count: infinite;
+  // animation-timing-function: linear;
   // , get-bigger 8s forwards;
 
   // go-right 10s both infinite linear;
@@ -16,11 +18,26 @@
   100% { transform: translateX(100%) }
 }
 
+@keyframes go-down {
+  0% { transform: translateX(100px) translateY(0) }
+  100% { transform: translateX(100px) translateY(100%) }
+}
+
 @keyframes fontsize {
   0% { font-size: 16px }
-  25% { font-size: 32px }
-  50% { font-size: 24px }
-  75% { font-size: 32px }
+  25% { font-size: 48px }
+  50% { font-size: 32px }
+  75% { font-size: 48px }
   100% { font-size: 16px }
+}
+
+@keyframes bottom-left {
+  0% { transform: translateY(60%) translateX(-100px) }
+  100% { transform: translateY(60%) translateX(100%) }
+}
+
+@keyframes bottom-right {
+  0% { transform: translateY(90%) translateX(80%) }
+  100% { transform: translateY(-140px) translateX(80%) }
 }
 
