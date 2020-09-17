@@ -88,7 +88,7 @@ class WordsController < ApplicationController
     number_of_words = @all_words.count
     @index2 = params["nextword"].to_i || @index2 = 0
 
-    if @index2 == number_of_words - 1
+    if @index2 == number_of_words
       @index2 = 0
     end
 
@@ -110,7 +110,6 @@ class WordsController < ApplicationController
 
 
     @photo = @word.image_urls.sample
-
   end
 
   def show
