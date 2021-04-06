@@ -40,13 +40,13 @@
         </form>
 
                <% if @wrong %>
-        <h1 style="color: red;">Wrong!</h1>
+        <p style="color: red;">Not quite, give it another shot!</p>
         <% end %>
 
-        <div class="btn btn-primary mt-3" id="show_word_button" data-word=<%= @word.word %> >Not sure?</div>
+        <div class="btn btn-light mt-3" id="show_word_button" data-word=<%= @word.word %> >Not sure?</div>
         <div id="answer" class="hidden_answer mt-2">
           <% if current_user.language == 'spanish' %>
-            <p>Answer: <%= @word.word %></p>
+            <p>The word is <span style="color: green;">"<%= @word.word %>"</span></p>
           <% else %>
             <p>Respuesta: <%= @word.translation %></p>
           <% end %>
