@@ -1,10 +1,12 @@
 <br>
-<h1><strong><%= @word.word %></strong>  means <strong><%= @word.translation %></strong></h1>
-<h2>Select photos to be used for your flashcards.  We recommend selecting at least 3</h2>
-<hr>
+<div style="margin: 24px;">
+  <h1><strong><%= @word.word %></strong>  means <strong><%= @word.translation %></strong></h1>
+  <h3>Select your favorite photos from below for your flashcards (at least 3 is recommended)</h3>
+  <hr>
+</div>
 
 
-
+<div style="margin: 8px;">
 <% @word.image_urls.each do |image| %>
 
 <img src="<%= image %>&w=150&h=150" alt="" class="buzz">
@@ -12,11 +14,15 @@
 <% end %>
 <hr>
 
+
 <form action="/words/show_second" id="photos-form">
   <input type="hidden" name="id" value="<%= params[:id] %>">
-  <input type="submit" id="photos-submit" value="Submit">
+  <div style="text-align: center;">
+    <input type="submit" id="photos-submit" value="Submit" class = "btn btn-primary" style="text-align: center; margin-top: 20px; padding: 4px 24px;">
+  </div>
 </form>
 
+</div>
 
 
 <%= javascript_pack_tag 'select_photo' %>

@@ -147,7 +147,7 @@ class WordsController < ApplicationController
   def settingssecond
     current_user.language = params["language"]
     current_user.save
-    redirect_to settings_path
+    redirect_to new_word_path
   end
 
   private
