@@ -1,6 +1,10 @@
 a:link, a:visited, a:active, a:hover {
-  color: white;
+  color: black;
   text-decoration: none;
+}
+
+.white-text:link, .white-text:visited, .white-text:active, .white-text:hover {
+  color: white;
 }
 
 a:hover {
