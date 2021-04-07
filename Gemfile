@@ -35,3 +35,4 @@ end
 gem 'json', '~> 2.3'
 gem 'openurl'
 gem "bing_translator", "~> 6.0.0"
+gem 'dotenv-rails', groups: [:development, :test]
