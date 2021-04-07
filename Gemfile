@@ -32,6 +32,6 @@ end
 
 # added by victor
 
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json', '~> 2.3'
 gem 'openurl'
 gem "bing_translator", "~> 6.0.0"
