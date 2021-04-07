@@ -11,7 +11,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    translator = BingTranslator.new('cc3610100b0b44ad94f7a3dc9832a6c8')
+    translator = BingTranslator.new(ENV['COGNITIVE_SUBSCRIPTION_KEY'])
     @locale = translator.detect(word_params["word"])
     if @locale == :es
       @word = Word.new(word_params)
@@ -121,7 +121,7 @@ class WordsController < ApplicationController
     # "AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgGgHhHhIIIIiiiiIiIiIiIiIiJjKkkLlLlLlLlLlNnNnNnNnnNnOOOOOOooooooOoOoOoRrRrRrSsSsSsSssTtTtTtUUUUuuuuUuUuUuUuUuUuWwYyyYyYZzZzZz")
 
 
-    image_search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?Subscription-Key=895bd91126ba4364997596d10078196f&q=#{remove_accents}&count=9"
+    image_search_url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?Subscription-Key=#{ENV['SUBSCRIPTION_KEY']}&q=#{remove_accents}&count=9"
     image_search_url_serialized = open(image_search_url).read
     image_search_url_parsed = JSON.parse(image_search_url_serialized)
     int = 0
