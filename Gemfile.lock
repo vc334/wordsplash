@@ -60,7 +60,7 @@ GEM
       execjs
     bcrypt (3.1.13)
     bindex (0.8.1)
-    bing_translator (6.0.0)
+    bing_translator (6.1.0)
       json
     bootsnap (1.4.6)
       msgpack (~> 1.0)
@@ -227,7 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bing_translator (~> 6.0.0)
+  bing_translator (~> 6.1)
   bootsnap
   devise
   dotenv-rails
