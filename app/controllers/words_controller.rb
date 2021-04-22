@@ -50,12 +50,16 @@ class WordsController < ApplicationController
   end
 
   def index
-    @words = Word.all
+    @words = Word.where(user: current_user)
   end
 
   def flashcards
-    @word = Word.all.sample
+    @word = Word.where(user: current_user).sample
+    if @word.nil?
+      return
+    else
     @photo = @word.image_urls.sample
+    end
   end
 
   def flashcards_second
@@ -84,7 +88,7 @@ class WordsController < ApplicationController
   end
 
   def practice
-    @all_words = Word.all
+    @all_words = Word.where(user: current_user)
     number_of_words = @all_words.count
     @index2 = params["nextword"].to_i || @index2 = 0
 
@@ -101,11 +105,12 @@ class WordsController < ApplicationController
     #   @word = @words[index]
     #   @index2 = 0
     # end
-
+    if @all_words.empty?
+      return
+    else
     current_user.language == "spanish" ? @displayed_word = @word.translation : @displayed_word = @word.word
-
     current_user.language == 'spanish' ? @moving_word = @word.word : @moving_word = @word.translation
-
+    end
     # params["nextword"] != nil ? @index2 +=1 : @index2 = 1
 
 
