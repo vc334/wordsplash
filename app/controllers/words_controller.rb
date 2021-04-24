@@ -1,6 +1,5 @@
 require 'json'
 require 'open-uri'
-
 require 'rubygems'
 require 'bing_translator'
 
